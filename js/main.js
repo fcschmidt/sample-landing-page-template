@@ -7,11 +7,9 @@ showSlides(slideIndex);
 function plusSlides(n) {
     showSlides(slideIndex += n);
 }
-
 function currentSlide(n) {
     showSlides(slideIndex = n);
 }
-
 function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("myCarousel");
@@ -29,21 +27,21 @@ function showSlides(n) {
 }
 
 /*
-* Math Captcha Validation Form
+* Captcha for Validation Form
 * */
 var total;
-function getRandom(){
+function getRandom() {
     return Math.ceil(Math.random()* 30);
 }
-function createSum(){
-    var randomNum1 = getRandom(),
-        randomNum2 = getRandom();
-    total =randomNum1 + randomNum2;
-    $("#captcha").text(randomNum1 + " + " + randomNum2 + " = " + " ? ");
+function createSum() {
+    var randomX = getRandom(),
+        randomY = getRandom();
+    total =randomX + randomY;
+    $("#captcha").text(randomX + " + " + randomY + " = " + " ? ");
 }
 
-Captcha();
-function Captcha(){
+validationCaptcha();
+function validationCaptcha() {
   $('button[type=submit]').attr('disabled', 'disabled');
 
   createSum();
@@ -54,16 +52,14 @@ function Captcha(){
 
       $('#message').hide();
 
-      if(input == total) {
+      if (input == total) {
           $('button[type=submit]').removeAttr('disabled');
           $('#success').slideDown(slideSpeed);
           $('#fail').slideUp(slideSpeed);
-      }else{
+      } else {
           $('button[type=submit]').attr('disabled','disabled');
           $('#fail').slideDown(slideSpeed);
           $('#success').slideUp(slideSpeed);
       }
   });
 }
-
-
